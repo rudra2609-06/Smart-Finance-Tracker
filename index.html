@@ -15,7 +15,7 @@
 	<header>
 		<div class="container mx-auto max-w-[1240px] py-5">
 			<div class="flex justify-between items-center">
-				<div class="flex items-center gap-1.5">
+				<div class="flex items-center gap-1.5 md:pl-0 pl-1.5">
 					<span class="material-symbols-outlined">
 						credit_card
 					</span>
@@ -23,7 +23,7 @@
 						Smart Finance Tracker
 					</h1>
 				</div>
-				<button class="flex items-center gap-1.5 bg-[#eaf2ff] p-3 rounded-full cursor-pointer">
+				<button class="flex items-center gap-1.5 bg-[#eaf2ff] p-3 rounded-full cursor-pointer md:pl-0 pl-1.5">
 					<span class="material-symbols-outlined">
 						backlight_low
 					</span>
@@ -36,155 +36,119 @@
 	</header>
 
 	<main>
-		<div class="wrapper max-w-[1240px] mx-auto flex flex-col md:flex-row py-5 md:gap-7">
-			<section class="add-transaction py-3">
-			<div class="container mx-auto max-w-[1240px] py-5">
-				<div class="w-full md:max-w-md md:min-h-[420px] rounded-lg py-3 px-4 border border-[#e6e9ee] shadow-sm">
-					<h2 class="font-medium text-[#0F1724] text-lg mb-5 md:text-left text-center">Add Transaction</h2>
-					<form>
-						<div class="mb-3">
-							<label for="input-description" class="block text-[#A3AAB7] mb-1">Description</label>
-							<input
-								type="text"
-								id="input-description"
-								class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none cursor-pointer placeholder:text-[#0f1724]"
-								placeholder="e.g.,Grocery shopping"
-							/>
-						</div>
-						<div class="flex items-center gap-2.5 mb-3">
-							<div class="amount w-1/2">
-								<label for="input-amount"  class="text-[#A3AAB7]">Amount</label>
-								<input 
-								type="number"
-								id="input-amount"
-								class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none placeholder:text-[#0f1724]"
-								placeholder="0.00"
-								>
-							</div>
-							<div class="amount w-1/2 flex flex-col">
-								<label for="input-type" class="text-[#A3AAB7]">Type</label>
-								<select 
-								  id="input-type"
-								  class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none placeholder:text-[#0f1724] appearance-none cursor-pointer"
-								>
-									<option value="option-1">Income</option>
-									<option value="option-2">Expense</option>
-								</select>
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="input-date" class="block text-[#A3AAB7] mb-1">Date</label>
-							<input
-								type="date"
-								id="input-date"
-								class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none cursor-pointer placeholder:text-[#0f1724]"
-							/>
-						</div>
-						<button type="submit" class="py-3 w-full bg-[#6c7ce0] text-white rounded-full font-medium cursor-pointer">Add</button>
-						<p class="mt-2 text-md text-[#98a0af] px-2 ">Quick tip:Keep description short and clear</p>
-					</form>
+		<!-- Wrapper Section -->
+		<div class="wrapper max-w-[1240px] mx-auto flex flex-col md:flex-row py-5 md:gap-7 px-3 md:px-0">
+		<!-- Add Transaction Section -->
+		<section class="add-transaction py-3 px-3 md:px-0">
+			<div class="w-full md:max-w-md md:min-h-[420px] rounded-lg py-3 px-4 md:px-5 border border-[#e6e9ee] shadow-sm">
+			<h2 class="font-medium text-[#0F1724] text-lg mb-5 md:text-left text-center">Add Transaction</h2>
+			<form>
+				<div class="mb-3">
+				<label for="input-description" class="block text-[#A3AAB7] mb-1">Description</label>
+				<input
+					type="text"
+					id="input-description"
+					class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none cursor-pointer placeholder:text-[#0f1724]"
+					placeholder="e.g.,Grocery shopping"
+				/>
 				</div>
+				<div class="flex items-center gap-2.5 mb-3 flex-wrap">
+				<div class="amount w-full md:w-1/2">
+					<label for="input-amount" class="text-[#A3AAB7]">Amount</label>
+					<input 
+					type="number"
+					id="input-amount"
+					class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none placeholder:text-[#0f1724]"
+					placeholder="0.00"
+					>
+				</div>
+				<div class="amount w-full md:w-1/2">
+					<label for="input-type" class="text-[#A3AAB7]">Type</label>
+					<select 
+					id="input-type"
+					class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none cursor-pointer"
+					>
+					<option value="option-1">Income</option>
+					<option value="option-2">Expense</option>
+					</select>
+				</div>
+				</div>
+				<div class="mb-3">
+				<label for="input-date" class="block text-[#A3AAB7] mb-1">Date</label>
+				<input
+					type="date"
+					id="input-date"
+					class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none cursor-pointer placeholder:text-[#0f1724]"
+				/>
+				</div>
+				<button type="submit" class="py-3 w-full bg-[#6c7ce0] text-white rounded-full font-medium cursor-pointer">Add</button>
+				<p class="mt-2 text-md text-[#98a0af] px-2">Quick tip: Keep description short and clear</p>
+			</form>
 			</div>
-			</section>
-			<section class="transaction-details py-3">
-				<div class="container mx-auto max-w-[1240px] py-5">
-					<div class="display-details flex flex-wrap justify-center md:justify-start items-center gap-5">
-  
-					<!-- Total Income -->
-					<div 
-						id="total-income"
-						class="w-[250px] p-4 bg-[#E9F8EF] rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow"
-					>
-						<h4 class="text-[#1C7C54] font-medium mb-1">Total Income</h4>
-						<p id="display-income" class="text-[#0F3D2E] font-bold text-xl">$0.00</p>
-					</div>
+		</section>
+		<!-- Transaction Details Section -->
+		<section class="transaction-details py-3 px-3 md:px-0">
+			<!-- Filter Section -->
+			<div class="filter-transactions mt-[30px] w-full border border-[#e6e9ee] shadow-md p-3 md:px-5 rounded-lg text-center md:text-left">
+			<h5 class="text-[#98a0af] font-medium px-3 md:px-0 md:mb-0 mb-2">Filter & Search</h5>
+			<div class="flex md:flex-row flex-wrap items-end gap-3 justify-center md:justify-start md:gap-5">
+				<!-- Filter Options -->
+				<div class="filter-options p-3 border border-[#e6e9ee] shadow-md w-[200px] rounded-lg">
+				<div class="flex items-center gap-4">
+					<span class="material-symbols-outlined">dehaze</span>
+					<select id="filter-type" class="appearance-none cursor-pointer w-full focus:outline-none">
+					<option value="option-1">All Types</option>
+					<option value="option-2">Incomes</option>
+					<option value="option-3">Expenses</option>
+					</select>
+				</div>
+				</div>
+				<div class="filter-options p-3 border border-[#e6e9ee] shadow-md w-[200px] rounded-lg">
+				<div class="flex items-center gap-4">
+					<span class="material-symbols-outlined">calendar_month</span>
+					<select id="filter-month" class="appearance-none cursor-pointer w-full focus:outline-none">
+					<option value="option-1">This Month</option>
+					<option value="option-2">Incomes</option>
+					<option value="option-3">Expenses</option>
+					</select>
+				</div>
+				</div>
+				<div class="filter-options p-3 border border-[#e6e9ee] md:w-[270px] w-full rounded-lg">
+				<div class="flex items-center gap-4">
+					<span class="material-symbols-outlined">search</span>
+					<input 
+					type="text"  
+					id="search-transaction"
+					class="placeholder:text-[#273152] w-full focus:outline-none"
+					placeholder="Search description..."
+					/>
+				</div>
+				</div>
+				<button class="bg-[#6c7ce0] p-2 rounded-lg text-white cursor-pointer">Reset</button>
+			</div>
+			</div>
 
-					<!-- Total Expense -->
-					<div 
-						id="total-expense"
-						class="w-[250px] p-4 bg-[#FFE8E6] rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow"
-					>
-						<h4 class="text-[#B42318] font-medium mb-1">Total Expense</h4>
-						<p id="display-expense" class="text-[#7A1E10] font-bold text-xl">$0.00</p>
-					</div>
+			<!-- Transactions Table -->
+			<div class="display-description mt-8 border border-gray-300 rounded-xl shadow-md overflow-hidden px-2 md:px-0">
+			<!-- Header Row -->
+			<div class="description-headers grid grid-cols-5 gap-2 bg-blue-50 p-3 text-gray-600 font-medium text-sm text-center md:text-left">
+				<h5>Description</h5>
+				<h5>Amount</h5>
+				<h5>Type</h5>
+				<h5>Date</h5>
+				<h5></h5>
+			</div>
 
-					<!-- Balance -->
-					<div 
-						id="total-balance"
-						class="w-[250px] p-4 bg-[#EAF2FF] rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow"
-					>
-						<h4 class="text-[#3A52A3] font-medium mb-1">Balance</h4>
-						<p id="display-balance" class="text-[#0F1724] font-bold text-xl">$0.00</p>
-					</div>
-
-					</div>
-
-					<div class="filter-transactions mt-[30px] w-full border border-[#e6e9ee] shadow-md p-3 rounded-lg text-center md:text-left">
-						<h5 class="text-[#98a0af] font-medium px-3 md:mb-0 mb-2">Filter & Search</h5>
-							<div class="flex md:flex-row flex-wrap items-end gap-3 flex flex-wrap justify-center md:justify-start items-center md:gap-5 gap-2">
-							<div class="filter-options p-3 md:mt-4 mt-1.5 border border-[#e6e9ee] shadow-md w-[200px] rounded-lg">
-								<div class="flex items-center gap-4">
-									<span class="material-symbols-outlined">
-									dehaze
-									</span>
-									<select id="filter-type" class="appearance-none cursor-pointer w-full focus:outline-none">
-									<option value="option-1">All Types</option>
-									<option value="option-2">Incomes</option>
-									<option value="option-3">Expenses</option>
-								</select>
-								</div>
-							</div>
-							<div class="filter-options p-3 md:mt-4 mt-1.5 border border-[#e6e9ee] shadow-md w-[200px] rounded-lg">
-								<div class="flex items-center gap-4">
-									<span class="material-symbols-outlined">
-									calendar_month
-									</span>
-									<select id="filter-month" class="appearance-none cursor-pointer w-full focus:outline-none">
-									<option value="option-1">This Month</option>
-									<option value="option-2">Incomes</option>
-									<option value="option-3">Expenses</option>
-								</select>
-								</div>
-							</div>
-							<div class="filter-options p-3 md:mt-4 mt-1.5 border border-[#e6e9ee] shadow-md md:w-[270px] w-full rounded-lg">
-								<div class="flex items-center gap-4">
-									<span class="material-symbols-outlined">
-										search
-									</span>
-									<input 
-									  type="text"  
-									  id="search-transaction"
-									  class="placeholder:text-[#273152] w-full focus:outline-none"
-									  placeholder="Search description..."
-									/>
-								</div>
-							</div>
-							<button class="bg-[#6c7ce0] p-2 rounded-lg text-white cursor-pointer">Reset</button>
-						</div>				
-					</div>
-
-					<div class="display-description mt-8 border border-gray-300 rounded-xl shadow-md overflow-hidden">
-					<!-- Header Row -->
-					<div class="description-headers grid grid-cols-5 gap-2 bg-blue-50 p-3 text-gray-600 font-medium text-sm text-center md:text-left">
-						<h5>Description</h5>
-						<h5>Amount</h5>
-						<h5>Type</h5>
-						<h5>Date</h5>
-						<h5></h5>
-					</div>
-
-					<!-- Transaction Row -->
-					<div class="transactions grid grid-cols-5 gap-2 p-3 text-gray-800 text-sm text-center md:text-left items-center border-t border-gray-200">
-						<p class="truncate">Salary-July</p>
-						<p>0983403</p>
-						<p>Income</p>
-						<p>2025-04-01</p>
-						<p class="text-red-500 cursor-pointer hover:underline">Delete</p>
-					</div>
-					</div>
-
-
-			</section>
+			<!-- Transaction Row -->
+			<div class="transactions grid grid-cols-5 gap-2 p-3 text-gray-800 text-sm text-center md:text-left items-center border-t border-gray-200">
+				<p class="truncate">Salary-July</p>
+				<p>0983403</p>
+				<p>Income</p>
+				<p>2025-04-01</p>
+				<p class="text-red-500 cursor-pointer hover:underline">Delete</p>
+			</div>
+			</div>
+		</section>
 		</div>
 	</main>
 
