@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "rootDir": "src/ts",
+    "outDir": "dist",
+    "target": "ESNext",
+    "module": "ESNext",               // ES modules for browser
+    "moduleResolution": "bundler",    // or "node" for relative imports
+    "strict": true,
+    "sourceMap": true,
+    "declaration": false
+  },
+  "include": ["src/ts"]
+}
