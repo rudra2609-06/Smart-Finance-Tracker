@@ -1,18 +1,12 @@
 import { transactions, deleteTransaction } from "./transactions.js";
 
-export function renderTransaction(): void {
-  const displayContainer = document.getElementById(
-    "display-container"
-  ) as HTMLDivElement;
-  const displayIncome = document.getElementById(
-    "display-income"
-  ) as HTMLParagraphElement;
-  const displayExpense = document.getElementById(
-    "display-expense"
-  ) as HTMLParagraphElement;
-  const displayBalance = document.getElementById(
-    "display-balance"
-  ) as HTMLParagraphElement;
+export function renderTransaction(transactionsToRender?: typeof transactions): void {
+  const list = transactionsToRender || transactions; 
+
+  const displayContainer = document.getElementById("display-container") as HTMLDivElement;
+  const displayIncome = document.getElementById("display-income") as HTMLParagraphElement;
+  const displayExpense = document.getElementById("display-expense") as HTMLParagraphElement;
+  const displayBalance = document.getElementById("display-balance") as HTMLParagraphElement;
 
   const headerHTML =
     displayContainer.querySelector(".description-headers")?.outerHTML || "";
@@ -20,24 +14,25 @@ export function renderTransaction(): void {
 
   let transactionsHTML = "";
 
-  transactions.forEach((transaction) => {
+  list.forEach((transaction) => {
     transactionsHTML += `
       <div class="transactions grid grid-cols-5 gap-2 p-3 text-gray-800 text-sm text-center md:text-left items-center border-t border-gray-200">
         <p class="truncate">${transaction.description}</p>
         <p>${transaction.amount}</p>
         <p>${transaction.type}</p>
         <p>${transaction.date}</p>
-        <p class="text-red-500 cursor-pointer hover:underline" data-id = ${transaction.id}>Delete</p>
+        <p class="text-red-500 cursor-pointer hover:underline" data-id="${transaction.id}">Delete</p>
       </div>
     `;
   });
 
   displayContainer.innerHTML += transactionsHTML;
 
+  // Compute income/expense/balance based on list
   let income = 0;
   let expense = 0;
 
-  transactions.forEach((t) => {
+  list.forEach((t) => {
     if (t.type === "Income") income += t.amount;
     else expense += t.amount;
   });
@@ -48,6 +43,7 @@ export function renderTransaction(): void {
   displayExpense.textContent = `$${expense.toFixed(2)}`;
   displayBalance.textContent = `$${balance.toFixed(2)}`;
 
+  // Handle delete clicks
   displayContainer.addEventListener("click", (e) => {
     const targetedElement = e.target as HTMLElement;
     if (
@@ -56,7 +52,7 @@ export function renderTransaction(): void {
     ) {
       const id = parseInt(targetedElement.getAttribute("data-id")!);
       deleteTransaction(id);
-      renderTransaction();
+      renderTransaction(); // Render full list after delete
     }
   });
 }
