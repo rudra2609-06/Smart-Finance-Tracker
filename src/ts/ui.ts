@@ -1,12 +1,26 @@
-import { transactions, deleteTransaction } from "./transactions.js";
+import {
+  transactions,
+  deleteTransaction,
+  saveTransaction,
+} from "./transactions.js";
 
-export function renderTransaction(transactionsToRender?: typeof transactions): void {
-  const list = transactionsToRender || transactions; 
+const displayContainer = document.getElementById(
+  "display-container"
+) as HTMLDivElement;
 
-  const displayContainer = document.getElementById("display-container") as HTMLDivElement;
-  const displayIncome = document.getElementById("display-income") as HTMLParagraphElement;
-  const displayExpense = document.getElementById("display-expense") as HTMLParagraphElement;
-  const displayBalance = document.getElementById("display-balance") as HTMLParagraphElement;
+export function renderTransaction(
+  transactionsToRender?: typeof transactions
+): void {
+  const list = transactionsToRender || transactions;
+  const displayIncome = document.getElementById(
+    "display-income"
+  ) as HTMLParagraphElement;
+  const displayExpense = document.getElementById(
+    "display-expense"
+  ) as HTMLParagraphElement;
+  const displayBalance = document.getElementById(
+    "display-balance"
+  ) as HTMLParagraphElement;
 
   const headerHTML =
     displayContainer.querySelector(".description-headers")?.outerHTML || "";
@@ -42,17 +56,17 @@ export function renderTransaction(transactionsToRender?: typeof transactions): v
   displayIncome.textContent = `$${income.toFixed(2)}`;
   displayExpense.textContent = `$${expense.toFixed(2)}`;
   displayBalance.textContent = `$${balance.toFixed(2)}`;
-
-  // Handle delete clicks
-  displayContainer.addEventListener("click", (e) => {
-    const targetedElement = e.target as HTMLElement;
-    if (
-      targetedElement.tagName === "P" &&
-      targetedElement.classList.contains("text-red-500")
-    ) {
-      const id = parseInt(targetedElement.getAttribute("data-id")!);
-      deleteTransaction(id);
-      renderTransaction(); // Render full list after delete
-    }
-  });
 }
+
+// Handle delete clicks
+displayContainer.addEventListener("click", (e) => {
+  const targetedElement = e.target as HTMLElement;
+  if (
+    targetedElement.tagName === "P" &&
+    targetedElement.classList.contains("text-red-500")
+  ) {
+    const id = parseInt(targetedElement.getAttribute("data-id")!);
+    deleteTransaction(id);
+    renderTransaction();
+  }
+});

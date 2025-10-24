@@ -8,9 +8,11 @@ import {
 import { renderTransaction } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  //dark mode
-  const modeToggleBtn = document.getElementById("dark-mode") as
-  HTMLButtonElement;
+
+  console.log("script loaded");
+  loadTransaction();
+  renderTransaction();
+  
 
   // Elements
   const inputDescription = document.getElementById(
@@ -42,9 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const today = new Date().toISOString().split("T")[0];
   inputDate.max = today;
-
-  loadTransaction();
-  renderTransaction();
 
   function handleFormSubmit(e: Event) {
     // Reading values
