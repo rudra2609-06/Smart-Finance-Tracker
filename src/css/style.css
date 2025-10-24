@@ -1,0 +1,107 @@
+.btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+  color: #9b59b6;
+  border: 2px solid #9b59b6;
+  background-color: transparent;
+  transition: color 0.5s ease, transform 0.2s ease;
+  z-index: 1;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  height: 100%;
+  background-color: #9b59b6;
+  transition: width 0.6s ease-in-out;
+  z-index: -1;
+}
+
+.btn:hover::after,
+.btn:focus::after {
+  width: 100%;
+}
+
+.btn:hover,
+.btn:focus {
+  color: white;
+}
+
+/* 🎉 Lively focus animation: wiggle + pop */
+.btn:focus {
+  animation: btnAlive 0.6s ease forwards;
+}
+
+@keyframes btnAlive {
+  0%   { transform: scale(1) rotate(0deg); }
+  15%  { transform: scale(1.1, 0.9) rotate(-5deg); }
+  30%  { transform: scale(0.9, 1.1) rotate(5deg); }
+  45%  { transform: scale(1.05, 0.95) rotate(-3deg); }
+  60%  { transform: scale(0.95, 1.05) rotate(3deg); }
+  75%  { transform: scale(1.02, 0.98) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+
+.tick-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0); /* transparent background */
+  transition: transform 0.3s ease;
+}
+
+.tick-overlay.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.tick {
+  width: 100px;
+  height: 100px;
+}
+
+.tick-circle {
+  stroke: #4caf50;
+  stroke-width: 4;
+  stroke-dasharray: 157; /* 2πr for r=25 */
+  stroke-dashoffset: 157;
+  animation: circleDraw 0.5s forwards;
+}
+
+.tick-check {
+  stroke: #4caf50;
+  stroke-width: 4;
+  stroke-dasharray: 42; /* length of the check path */
+  stroke-dashoffset: 42;
+  animation: checkDraw 0.3s forwards;
+  animation-delay: 0.5s; /* after circle */
+}
+
+@keyframes circleDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

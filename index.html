@@ -7,6 +7,7 @@
 	<title>Smart Finance Tracker</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+	<link rel="stylesheet" href="./src/css/style.css">
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
@@ -19,7 +20,8 @@
 					<h1 class="font-semibold text-lg">Smart Finance Tracker</h1>
 				</div>
 				<button
-					class="flex items-center gap-1.5 bg-[#eaf2ff] px-4 py-2 rounded-full cursor-pointer hover:bg-[#dbe6fb] transition">
+					id="dark-mode"
+					class="flex items-center gap-1.5 bg-[#eaf2ff] px-4 py-2 rounded-full cursor-pointer hover:bg-[#dbe6fb] hover:ring-2 hover:ring-[#3A52A3] transition">
 					<span class="material-symbols-outlined">backlight_low</span>
 					<span>Light/Dark</span>
 				</button>
@@ -28,7 +30,6 @@
 	</header>
 
 	<main>
-		<!-- Wrapper Section -->
 		<div class="wrapper max-w-[1240px] mx-auto flex flex-col md:flex-row py-5 md:gap-7 px-3 md:px-0">
 			<!-- Add Transaction Section -->
 			<section class="add-transaction py-3 px-3 md:px-0 md:order-2">
@@ -39,20 +40,20 @@
 						<div class="mb-3">
 							<label for="input-description" class="block text-[#A3AAB7] mb-1">Description</label>
 							<input type="text" id="input-description"
-								class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none placeholder:text-[#0f1724]"
+								class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:ring-2 focus:ring-[#6c7ce0] focus:outline-none appearance-none placeholder:text-[#0f1724]"
 								placeholder="e.g., Grocery shopping" />
 						</div>
 						<div class="flex items-center gap-2.5 mb-3 flex-wrap">
 							<div class="amount w-full md:w-1/2">
 								<label for="input-amount" class="text-[#A3AAB7]">Amount</label>
 								<input type="number" id="input-amount"
-									class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none placeholder:text-[#0f1724]"
+									class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:ring-2 focus:ring-[#6c7ce0] focus:outline-none placeholder:text-[#0f1724]"
 									placeholder="0.00">
 							</div>
 							<div class="amount w-full md:w-1/2">
 								<label for="input-type" class="text-[#A3AAB7]">Type</label>
 								<select id="input-type"
-									class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none cursor-pointer">
+									class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:ring-2 focus:ring-[#6c7ce0] focus:outline-none cursor-pointer appearance-none">
 									<option value="Income">Income</option>
 									<option value="Expense">Expense</option>
 								</select>
@@ -61,10 +62,12 @@
 						<div class="mb-3">
 							<label for="input-date" class="block text-[#A3AAB7] mb-1">Date</label>
 							<input type="date" id="input-date"
-								class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:outline-none appearance-none cursor-pointer placeholder:text-[#0f1724]" />
+								class="w-full border border-gray-400 py-2.5 px-3.5 rounded-lg focus:ring-2 focus:ring-[#6c7ce0] focus:outline-none appearance-none cursor-pointer placeholder:text-[#0f1724]" />
 						</div>
-						<button type="submit"
-							class="py-3 w-full bg-[#6c7ce0] text-white rounded-full font-medium cursor-pointer">Add</button>
+						<button 
+						 	id="add-btn"
+							type="submit"
+							class="btn btn-border-reveal">Add</button>
 						<p class="mt-2 text-md text-[#98a0af] px-2">Quick tip: Keep description short and clear</p>
 					</form>
 				</div>
@@ -74,21 +77,18 @@
 			<section class="transaction-details py-3 px-3 md:px-0 flex-1">
 				<!-- Summary Boxes -->
 				<div class="display-details flex flex-wrap justify-center md:justify-start items-center gap-5 mb-6">
-					<!-- Total Income -->
 					<div id="total-income"
 						class="w-[250px] p-4 bg-[#E9F8EF] rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
 						<h4 class="text-[#1C7C54] font-medium mb-1">Total Income</h4>
 						<p id="display-income" class="text-[#0F3D2E] font-bold text-xl">$0.00</p>
 					</div>
 
-					<!-- Total Expense -->
 					<div id="total-expense"
 						class="w-[250px] p-4 bg-[#FFE8E6] rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
 						<h4 class="text-[#B42318] font-medium mb-1">Total Expense</h4>
 						<p id="display-expense" class="text-[#7A1E10] font-bold text-xl">$0.00</p>
 					</div>
 
-					<!-- Balance -->
 					<div id="total-balance"
 						class="w-[250px] p-4 bg-[#EAF2FF] rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
 						<h4 class="text-[#3A52A3] font-medium mb-1">Balance</h4>
@@ -97,7 +97,6 @@
 				</div>
 
 				<!-- Filter Section -->
-				 
 				<div
 					class="filter-transactions w-full border border-[#e6e9ee] shadow-md p-3 md:px-5 rounded-lg text-center md:text-left">
 					<h5 class="text-[#98a0af] font-medium px-3 md:px-0 md:mb-0 mb-2">Filter & Search</h5>
@@ -106,35 +105,25 @@
 							<div class="flex items-center gap-4">
 								<span class="material-symbols-outlined">dehaze</span>
 								<select id="filter-type"
-									class="appearance-none cursor-pointer w-full focus:outline-none">
-									<option value="option-1">All Types</option>
-									<option value="option-2">Incomes</option>
-									<option value="option-3">Expenses</option>
+									class="appearance-none cursor-pointer w-full focus:ring-2 focus:ring-[#6c7ce0] focus:outline-none">
+									<option value="select-type" disabled selected>--Select Type--</option>
+									<option value="All-types">All Types</option>
+									<option value="Incomes">Incomes</option>
+									<option value="Expenses">Expenses</option>
 								</select>
 							</div>
 						</div>
 
-						<div class="filter-options p-3 border border-[#e6e9ee] shadow-md w-[200px] rounded-lg">
-							<div class="flex items-center gap-4">
-								<span class="material-symbols-outlined">calendar_month</span>
-								<select id="filter-month"
-									class="appearance-none cursor-pointer w-full focus:outline-none">
-									<option value="option-1">This Month</option>
-									<option value="option-2">Incomes</option>
-									<option value="option-3">Expenses</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="filter-options p-3 border border-[#e6e9ee] md:w-[270px] w-full rounded-lg">
+						<div class="filter-options p-3 border border-[#e6e9ee] md:w-[400px] w-full rounded-lg ">
 							<div class="flex items-center gap-4">
 								<span class="material-symbols-outlined">search</span>
 								<input type="text" id="search-transaction"
-									class="placeholder:text-[#273152] w-full focus:outline-none"
+									class="placeholder:text-[#273152] w-full  focus:outline-none rounded-lg"
 									placeholder="Search description..." />
 							</div>
 						</div>
-						<button class="bg-[#6c7ce0] p-2 rounded-lg text-white cursor-pointer">Reset</button>
+						<button id="reset-btn"
+							class="bg-[#6c7ce0] p-2 rounded-lg text-white cursor-pointer hover:bg-[#5b6cd0] hover:ring-2 hover:ring-[#3A52A3] transition">Reset</button>
 					</div>
 				</div>
 
@@ -153,8 +142,12 @@
 			</section>
 		</div>
 	</main>
-
-
+	<div id="success-tick" class="tick-overlay">
+		<svg class="tick" viewBox="0 0 52 52">
+			<circle class="tick-circle" cx="26" cy="26" r="25" fill="none" />
+			<path class="tick-check" fill="none" d="M14 27 l10 10 l20 -20" />
+		</svg>
+	</div>
 	<script src="./dist/main.js" type="module"></script>
 </body>
 
